@@ -8,6 +8,7 @@
 #endif //UNTITLED_HEADER_H
 
 int main();
-void matricesMultiplication(std::vector <std::vector <int>> matrix1, std::vector <std::vector <int>> matrix2);
-void printMatrix(std::vector <std::vector <int>> matrix);
-std::vector <std::vector <int>> matrixGenerator(int n, int m);
+void matricesMultiplication(const std::vector <std::vector <int>> matrix1, const std::vector <std::vector <int>> matrix2);
+void printMatrix(const std::vector <std::vector <int>> matrix);
+std::vector <std::vector <int>> matrixGenerator(const int n, const int m);
+std::vector <std::vector <int>> multiply_matrix(const std::vector <std::vector <int>>& a, const std::vector <std::vector<int>>& b, int block_size);
