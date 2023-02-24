@@ -3,4 +3,4 @@ project(multithreading)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(multithreading main.cpp gpt.cpp)
+add_executable(multithreading main.cpp)
