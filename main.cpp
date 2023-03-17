@@ -15,7 +15,7 @@ std::vector <std::vector <int>> emptyArray(const int n) {
     return matrix;
 }
 
-const int size = 1250;
+const int size = 1000;
 auto resultMatrix = emptyArray(size);
 auto matrix1 = matrixGenerator(size, size);
 auto matrix2 = matrixGenerator(size, size);
@@ -23,24 +23,24 @@ auto matrix2 = matrixGenerator(size, size);
 int main() {
     const double amountOfCores = 8;
     const double threadsPerCore = ceil(size / amountOfCores);
-    std::cout << threadsPerCore << std::endl;
+//    std::cout << threadsPerCore << std::endl;
     auto begin = std::chrono::system_clock::now();
 
-//    matricesMultiplication(matrix1, matrix2);
+    matricesMultiplication(matrix1, matrix2);
     auto end = std::chrono::system_clock::now();
     std::chrono::duration<double> elapsed = (end - begin);
-    std::cout << "Time single core " << elapsed.count() << " s\n";
+    std::cout << "Single threading time: " << elapsed.count() << " s\n";
 
     begin = std::chrono::system_clock::now();
 
     std::vector <std::thread> threads;
     for (int i = 0; i < matrix1.size(); i += threadsPerCore) {
         if (i >= matrix1.size() - threadsPerCore) {
-            std::cout << i << " " << matrix1.size() << std::endl;
+//            std::cout << i << " " << matrix1.size() << std::endl;
             threads.emplace_back(multithreading, i, matrix1.size());
             break;
         } else {
-            std::cout << i << " " << i+threadsPerCore << std::endl;
+//            std::cout << i << " " << i+threadsPerCore << std::endl;
             threads.emplace_back(multithreading, i, i+threadsPerCore);
         }
 
@@ -54,7 +54,7 @@ int main() {
 
     end = std::chrono::system_clock::now();
     elapsed = (end - begin);
-    std::cout << "Time multi core " << elapsed.count() << " s\n";
+    std::cout << "Multithreading time: " << elapsed.count() << " s\n";
 
     return 0;
 }
