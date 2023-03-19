@@ -5,6 +5,7 @@
 #include <chrono>
 #include <cmath>
 #include "header.h"
+
 std::vector <std::vector <int>> emptyArray(const int n) {
     std::vector <std::vector <int>> matrix = {};
 
@@ -101,7 +102,7 @@ std::vector <std::vector <int>> matrixGenerator(const int n, const int m) {
     }
 
     return result;
-}
+} 
 
 void multithreading(const int start, const int end) {
 

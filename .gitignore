@@ -1,4 +1,7 @@
 .DS_Store
+.idea
+cmake-build-debug/
+
 
 ### C++ template
 # Compiled Object files

@@ -11,6 +11,6 @@ int main();
 void matricesMultiplication(const std::vector <std::vector <int>> matrix1, const std::vector <std::vector <int>> matrix2);
 void printMatrix(const std::vector <std::vector <int>> matrix);
 std::vector <std::vector <int>> matrixGenerator(const int n, const int m);
-std::vector <std::vector <int>> multiply_matrix(const std::vector <std::vector <int>>& a, const std::vector <std::vector<int>>& b, int block_size);
+void matricesMultiplication(const std::vector <std::vector <int>> matrix1, const std::vector <std::vector <int>> matrix2);
 void multithreading(const int start, const int end);
 
