@@ -16,7 +16,7 @@ std::vector <std::vector <int>> emptyArray(const int n) {
     return matrix;
 }
 
-const int size = 1000;
+const int size = 3;
 auto resultMatrix = emptyArray(size);
 auto matrix1 = matrixGenerator(size, size);
 auto matrix2 = matrixGenerator(size, size);

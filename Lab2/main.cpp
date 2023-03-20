@@ -5,33 +5,40 @@
 #include <atomic>
 #include "header.h"
 
+const int n = 1000000000;
+
 int number = 0;
 std::mutex mt;
 
 std::atomic<int> atomicNum = 0;
 
 void increment() {
-    number++;
+    for (int i = 0; i < n; i++) {
+        number++;
+    }
 }
 
 void incrementMutex() {
-    mt.lock();
-    number++;
-    mt.unlock();
+    for (int i = 0; i < n; i++) {
+        mt.lock();
+        number++;
+        mt.unlock();
+    }
 }
 
 void incrementAtomic() {
-    atomicNum.fetch_add(1);
+    for (int i = 0; i < n; i++) {
+        atomicNum.fetch_add(1);
+    }
 }
 
 int main() {
-    const int n = 1000;
 
     // 1
     auto begin = std::chrono::system_clock::now();
 
     std::vector <std::thread> threads;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < 8; i++) {
         threads.emplace_back(increment);
     }
 
@@ -51,7 +58,7 @@ int main() {
     begin = std::chrono::system_clock::now();
 
     std::vector <std::thread> threads2;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < 8; i++) {
         threads2.emplace_back(incrementMutex);
     }
 
@@ -69,7 +76,7 @@ int main() {
     begin = std::chrono::system_clock::now();
 
     std::vector <std::thread> threads3;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < 8; i++) {
         threads3.emplace_back(incrementAtomic);
     }
 
@@ -81,5 +88,5 @@ int main() {
 
     end = std::chrono::system_clock::now();
     elapsed = (end - begin);
-    std::cout << "time #2: " << elapsed.count() << " s\n";
+    std::cout << "time #3: " << elapsed.count() << " s\n";
 }
