@@ -3,4 +3,4 @@ project(uni-operating-systems)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(uni-operating-systems Lab3/main.cpp)
+add_executable(uni-operating-systems main.cpp)
